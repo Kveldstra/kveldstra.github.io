@@ -7,6 +7,7 @@
     --green: #c3d2c6;
     --yellow: #ead7c4;
     --text: #3d3552;
+    --alert: #b84a4a;
     --font: "Fredoka", sans-serif;
 }
 
@@ -83,6 +84,12 @@ article {
 
 article h3 {
     margin-bottom: 0.4rem;
+}
+
+.inactive-note {
+    color: var(--alert);
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 /*bounce animation when you hover over a project card*/
@@ -172,5 +179,3 @@ h2 {
     }
 }
 
-/*left off: edited github profile
-next: step 2- install git*/
