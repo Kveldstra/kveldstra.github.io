@@ -1,0 +1,176 @@
+/*variables to switch out colors easier*/
+:root {
+    --bg: #f7f0e6;
+    --pink: #e4cbd5;
+    --blue: #c5d7ea;
+    --lavender: #c3b6cc;
+    --green: #c3d2c6;
+    --yellow: #ead7c4;
+    --text: #3d3552;
+    --font: "Fredoka", sans-serif;
+}
+
+/*basic css composition*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    /*nav pills wrap instead of squishing on a narrow phone*/
+    flex-wrap: wrap;
+}
+
+nav a {
+    background: var(--lavender);
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background: var(--pink);
+}
+
+section {
+    max-width: 700px;
+    border-radius: 40px;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    margin: 1.5rem auto;
+    width: calc(100% - 2rem);
+}
+
+#hero {
+    background: var(--pink);
+    text-align: center;
+}
+
+#about {
+    background: var(--blue);
+}
+
+#projects {
+    background-color: var(--green);
+}
+
+#contact {
+    background: var(--yellow);
+}
+
+/*bubble project cards*/
+article {
+    background: var(--bg);
+    padding: 1.5rem;
+    border-radius: 30px;
+    margin-top: 1.5rem;
+    box-shadow: 0 8px 0 var(--lavender);
+    transition: transform 0.2s;
+}
+
+article h3 {
+    margin-bottom: 0.4rem;
+}
+
+/*bounce animation when you hover over a project card*/
+article:hover { transform: translateY(-4px); }
+
+/*make sizing flexible*/
+h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/*when the screen is 600px wide or narrower, use these rules instead*/
+@media (max-width: 600px) {
+    nav a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    article {
+        border-radius: 24px;
+    }
+}
+
+/*floating title animation*/
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+#hero h1 {
+    animation: float 3s ease-in-out infinite;
+}
+
+/*sets up "hidden" and "shifted down" states for the sections. 
+"transition" animates between the two*/
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/*all cards fade in together*/
+.reveal article {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.2s ease;
+}
+
+.reveal.visible article{
+    opacity: 1;
+}
+
+/*give each card a staggering delay*/
+.reveal.visible article:nth-of-type(1) {
+    transition: opacity 0.6s ease 0.1s, transform 0.2s ease;
+}
+
+.reveal.visible article:nth-of-type(2) {
+    transition: opacity 0.6s ease 0.3s, transform 0.2s ease;
+}
+
+.reveal.visible article:nth-of-type(3) {
+    transition: opacity 0.6s ease 0.5s, transform 0.2s ease;
+}
+
+/*reduce motion setting, for those who dislike motion*/
+@media (prefers-reduced-motion: reduce) {
+    #hero h1 {
+        animation: none;
+    }
+
+    .reveal,
+    .reveal article,
+    .reveal.visible article:nth-of-type(n) {
+        transition: none;
+    }
+}
+
+/*left off: edited github profile
+next: step 2- install git*/
