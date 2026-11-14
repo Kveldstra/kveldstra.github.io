@@ -92,6 +92,12 @@ article h3 {
     font-size: 0.9rem;
 }
 
+.in-development {
+    color: var(--alert);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
 /*bounce animation when you hover over a project card*/
 article:hover { transform: translateY(-4px); }
 
